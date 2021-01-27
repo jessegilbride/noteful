@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 import Main from './Main';
 import Folder from './Folder';
 import Note from './Note';
+import FolderListSidebar from './FolderListSidebar';
+import FolderNameSidebar from './FolderNameSidebar';
 import './App.css';
 
 class App extends Component {
@@ -16,16 +18,16 @@ class App extends Component {
           </h1>
         </header>
         <main>
-        {/* <Sidebar>
-          <Route path='/' component={FolderListSidebar} />
-          <Route path='/' component={FolderNameSidebar} />
-        </Sidebar> */}
-        <Main>
-        </Main>
-          <section>
+          <nav>
+            <Switch>
+              <Route path='/folder/note' component={FolderNameSidebar} />
+              <Route path='/' component={FolderListSidebar} />
+            </Switch>
+          </nav>
+          <section className='main-view'>
             <Route exact path='/' component={Main} />
             <Route path='/folder' component={Folder} />
-            <Route path='folder/note' component={Note} />
+            <Route path='/folder/note' component={Note} />
           </section>
         </main>
       </div>
