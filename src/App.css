@@ -1,4 +1,5 @@
-.App {}
+.App {
+}
 
 .App header {
   background-color: #282c34;
@@ -12,11 +13,15 @@ main {
   flex-direction: column;
 }
 
-nav, section.main-view {}
+nav,
+section.main-view {
+}
 
-nav {}
+nav {
+}
 
-section.main-view {}
+section.main-view {
+}
 
 @media screen and (min-width: 720px) {
   .App {
