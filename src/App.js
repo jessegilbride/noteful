@@ -6,6 +6,7 @@ import Note from './Note';
 import './App.css';
 
 class App extends Component {
+  
   render() {
     return (
       <div className='App'>
@@ -15,11 +16,16 @@ class App extends Component {
           </h1>
         </header>
         <main>
-          <nav></nav>
+        {/* <Sidebar>
+          <Route path='/' component={FolderListSidebar} />
+          <Route path='/' component={FolderNameSidebar} />
+        </Sidebar> */}
+        <Main>
+        </Main>
           <section>
             <Route exact path='/' component={Main} />
-            <Route path='/folder/' component={Folder} />
-            <Route path='/folder/note' component={Note} />
+            <Route path='/folder' component={Folder} />
+            <Route path='folder/note' component={Note} />
           </section>
         </main>
       </div>
