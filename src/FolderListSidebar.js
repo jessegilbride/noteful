@@ -6,8 +6,7 @@ class FolderListSidebar extends Component {
       <div>
         <ul>FolderListSidebar item 1</ul>
         <ul>FolderListSidebar item 2</ul>
-        <ul>FolderListSidebar item 3</ul>
-        <hr />
+        <ul>FolderListSidebar item x</ul>
       </div>
     )
   }

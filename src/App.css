@@ -2,13 +2,24 @@
 }
 
 .App header {
-  background-color: #282c34;
-  min-height: 200px;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  color: white;
+  min-height: 100px;
+  background-color: #282c34;
 }
 
-main {
+.header-link {
+  text-decoration: none;
+  font-size: 200%;
+  color: crimson;
+}
+
+.header-link:hover {
+  color: khaki;
+}
+
+.flex-container {
   display: flex;
   flex-direction: column;
 }
@@ -24,7 +35,7 @@ section.main-view {
 }
 
 @media screen and (min-width: 720px) {
-  .App {
+  .flex-container {
     flex-direction: row;
   }
   nav {
