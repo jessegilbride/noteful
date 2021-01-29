@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+// PROPS PASSED IN:
 
 export class AllNotesView extends Component {
   render() {

@@ -3,6 +3,8 @@ import { Route } from 'react-router-dom';
 import AllNotes from './AllNotes';
 import Folder from './Folder';
 import Note from './Note';
+// PROPS PASSED IN:
+// notes={dummyStore.notes}
 
 class Main extends Component {
   render() {

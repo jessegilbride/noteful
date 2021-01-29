@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+// PROPS PASSED IN:
 
 class Folder extends Component {
   render() {

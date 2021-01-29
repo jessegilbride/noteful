@@ -22,6 +22,10 @@ class App extends Component {
           <Sidebar folders={dummyStore.folders} />
           <Main notes={dummyStore.notes} />
         </main>
+
+        {/* {console.log(dummyStore.folders)} */}
+        {/* {console.log(dummyStore.notes)} */}
+
       </div>
     )
   }
