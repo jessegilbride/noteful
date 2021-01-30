@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 // PROPS PASSED IN:
 
-class FolderNameSidebar extends Component {
+class SidebarFolderName extends Component {
   render() {
     return (
       <div>
@@ -12,4 +12,4 @@ class FolderNameSidebar extends Component {
   }
 }
 
-export default FolderNameSidebar
+export default SidebarFolderName

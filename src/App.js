@@ -8,6 +8,8 @@ import dummyStore from './dummyStore';
 // CSS --------------------
 import './App.css';
 
+console.clear();
+
 class App extends Component {
   
   render() {

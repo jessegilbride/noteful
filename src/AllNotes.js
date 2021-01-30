@@ -6,7 +6,7 @@ export class AllNotesView extends Component {
     return (
       <div>
         <p>AllNotes Component</p>
-        <p>reminder: put notes from store here</p>
+        <small>(reminder: put notes from store here)</small>
       </div>
     )
   }

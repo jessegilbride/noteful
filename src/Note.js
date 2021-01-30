@@ -5,8 +5,7 @@ class Note extends Component {
   render() {
     return (
       <div>
-        <p>this is the note view.</p>
-        
+        <p>This is the note view.</p>
       </div>
     )
   }

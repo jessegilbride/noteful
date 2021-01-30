@@ -1,4 +1,4 @@
-export default {
+const dummyStore = {
   "folders": [
     {
       "id": "b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1",
@@ -7,6 +7,10 @@ export default {
     {
       "id": "b07161a6-ffaf-11e8-8eb2-f2801f1b9fd1",
       "name": "Super"
+    },
+    {
+      "id": "b07161a3-ffaf-11e8-8eb2-f2801f1b9fd1",
+      "name": "Duper"
     },
     {
       "id": "b07162f0-ffaf-11e8-8eb2-f2801f1b9fd1",
@@ -114,3 +118,5 @@ export default {
     }
   ]
 }
+
+export default dummyStore;

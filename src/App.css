@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .App {
 }
 
@@ -19,7 +23,11 @@
   color: khaki;
 }
 
-.flex-container {
+main {
+  padding-top: 1em;
+}
+
+main.flex-container {
   display: flex;
   flex-direction: column;
 }
@@ -28,14 +36,41 @@ nav,
 section.main-view {
 }
 
-nav {
+.folder-list {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.folder-list-item {
+  margin-bottom: 1em;
+  width: fit-content;
+  text-align: center;
+  border: 1px solid black;
+}
+
+.folder-list-item:last-child {
+  margin-bottom: 0;
+}
+
+.folder-link {
+  display: inline-block;
+  width: 200px;
+  padding: 1em;
+  text-decoration: none;
+  color: black;
+}
+
+.folder-link:hover {
+  background: cornflowerblue;
 }
 
 section.main-view {
 }
 
 @media screen and (min-width: 720px) {
-  .flex-container {
+  main.flex-container {
     flex-direction: row;
   }
   nav {

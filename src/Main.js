@@ -10,9 +10,10 @@ class Main extends Component {
   render() {
     return (
       <section className='main-view'>
-        <Route exact path='/' component={AllNotes} />
-        <Route path='/folder' component={Folder} />
-        <Route path='/folder/note' component={Note} />
+        <Route path='/' exact component={AllNotes} />
+        <Route path='/:folderId' exact component={Folder} />
+        <Route path='/:folderId/:note' exact component={Note} />
+        {/* <Route path='/:folderId/:note/:anything' component={PageNotFound} /> */}
       </section>
     )
   }

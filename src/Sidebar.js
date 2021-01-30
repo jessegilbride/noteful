@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import FolderListSidebar from './FolderListSidebar';
-import FolderNameSidebar from './FolderNameSidebar';
+import SidebarFolderList from './SidebarFolderList';
+import SidebarFolderName from './SidebarFolderName';
 // PROPS PASSED IN:
 // folders={dummyStore.folders}
 
@@ -14,8 +14,10 @@ class Sidebar extends Component {
     return (
       <nav>
         <Switch>
-          <Route path='/folder/note' component={FolderNameSidebar} folders={this.props.folders} />
-          <Route path='/' render={props => <FolderListSidebar {...props} />} />
+          <Route path='/' exact render={ props => <SidebarFolderList {...this.props} />} />
+          <Route path='/:folder' render={ props => <SidebarFolderList {...this.props} />} />
+
+          <Route path='/:folder/:note' render={ props => <SidebarFolderName {...props} />} />
         </Switch>
       </nav>
     )
