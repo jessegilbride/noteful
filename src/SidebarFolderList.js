@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 // PROPS PASSED IN:
 // folders={dummyStore.folders}
 
@@ -10,9 +10,9 @@ class SidebarFolderList extends Component {
     const folderList = this.props.folders.map(folder => {
       return (
         <li key={folder.id} className='folder-list-item'>
-          <Link to={``} className='folder-link'>
+          <NavLink to={`/${folder.id}`} className='folder-link' activeClassName='active'>
             {folder.name}
-          </Link>
+          </NavLink>
         </li>
       )
     })

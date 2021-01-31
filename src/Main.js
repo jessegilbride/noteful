@@ -8,11 +8,25 @@ import Note from './Note';
 
 class Main extends Component {
   render() {
+    // console.log(this.props);
+
     return (
       <section className='main-view'>
-        <Route path='/' exact component={AllNotes} />
-        <Route path='/:folderId' exact component={Folder} />
-        <Route path='/:folderId/:note' exact component={Note} />
+        <Route 
+          path='/' exact 
+          render={props => (
+            <AllNotes {...this.props} />
+          )} />
+        <Route 
+          path='/:folderId' exact 
+          render={props => (
+            <Folder {...this.props} />
+          )} />
+        <Route 
+          path='/:folderId/:note' exact 
+          render={props => (
+            <Note {...this.props} />
+          )} />
         {/* <Route path='/:folderId/:note/:anything' component={PageNotFound} /> */}
       </section>
     )
