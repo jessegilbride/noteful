@@ -20,12 +20,13 @@ class Main extends Component {
         <Route 
           path='/:folderId' exact 
           render={(routeProps) => (
-            <Folder {...this.props} {...routeProps} />
+            // <Folder {...this.props} {...routeProps} />
+            <Folder notes={this.props.notes.filter(noteItem => (noteItem.folderId === routeProps.match.params.folderId))} {...routeProps} />
           )} />
         <Route 
           path='/:folderId/:note' exact 
           render={(routeProps) => (
-            <Note {...this.props.notes.find(note => note.id === routeProps.match.params.note)} {...routeProps} />
+            <Note {...this.props.notes.find(noteItem => noteItem.id === routeProps.match.params.note)} {...routeProps} />
             // <Note {...routeProps} />
           )} />
         {/* <Route path='/:folderId/:note/:anything' component={PageNotFound} /> */}

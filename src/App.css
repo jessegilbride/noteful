@@ -1,5 +1,14 @@
+:root {
+  --note-padding: 1em;
+}
+
 * {
   box-sizing: border-box;
+}
+
+.btn {
+  background: unset;
+  border: 1px solid black;
 }
 
 .App header {
@@ -65,14 +74,46 @@ main.flex-container {
   color: white;
 }
 
+.note-item {
+  position: relative;
+  padding: 0 1em;
+}
+
+.note-name {
+}
+
+.note-modified {
+  font-size: smaller;
+  font-style: italic;
+}
+
+.note-content {
+  margin-top: var(--note-padding);
+}
+
+.btn.note-delete {
+  position: unset;
+  margin-top: 3em;
+}
+
+/* ---------- DESKTOP RESPONSIVE VIEW ---------- */
 @media screen and (min-width: 720px) {
   main.flex-container {
     flex-direction: row;
   }
+
   nav {
     flex: 1;
   }
+
   section.main-view {
     flex: 3;
+  }
+
+  .btn.note-delete {
+    position: absolute;
+    top: var(--note-padding);
+    right: var(--note-padding);
+    margin-top: 0;
   }
 }

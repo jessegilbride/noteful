@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 // PROPS PASSED IN:
 // notes={dummyStore.notes}
+// routeProps={history, location, match}
 
 class Folder extends Component {
 
   render() {
     // console.log(this.props);
 
-    const origination = this.props.match.params.folderId;
-    const notes = this.props.notes.filter(match => (match.folderId === origination)).map(note => {
+    const notes = this.props.notes.map(note => {
       return (
         <li key={note.id}>
           <Link to={`/${note.folderId}/${note.id}`}>
