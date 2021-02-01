@@ -20,8 +20,8 @@ export class AllNotesView extends Component {
 
     return (
       <div>
-        <h2>All Notes</h2>
-        <ul className='all-notes-list'>
+        {/* <h2>All Notes</h2> */}
+        <ul className='notes-list-all'>
           {allNotes}
         </ul>
       </div>

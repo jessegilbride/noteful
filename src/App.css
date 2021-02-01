@@ -74,9 +74,23 @@ main.flex-container {
   color: white;
 }
 
+.notes-list-all,
+.notes-list-folder {
+  list-style: none;
+  padding-left: 0;
+}
+
+.notes-list-all li,
+.notes-list-folder li {
+  margin-bottom: 1em;
+}
+
 .note-item {
-  position: relative;
   padding: 0 1em;
+}
+
+.note-header {
+  position: relative;
 }
 
 .note-name {

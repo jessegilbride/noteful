@@ -22,8 +22,8 @@ class Folder extends Component {
     
     return (
       <div>
-        <p>This is the folder view.</p>
-        <ul>
+        {/* <h2>Notes in this folder</h2> */}
+        <ul className='notes-list-folder'>
           {notes}
         </ul>
       </div>
