@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export class AllNotesView extends Component {
   
   render() {
-    console.log(this.props);
+    // console.log(this.props);
 
     const allNotes = this.props.notes.map(note => {
       return (

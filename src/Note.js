@@ -5,6 +5,8 @@ class Note extends Component {
   
   render() {
     console.log(this.props);
+    // name, date, content
+    
     
     return (
       <div>

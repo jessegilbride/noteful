@@ -14,18 +14,19 @@ class Main extends Component {
       <section className='main-view'>
         <Route 
           path='/' exact 
-          render={props => (
-            <AllNotes {...this.props} />
+          render={(routeProps) => (
+            <AllNotes {...this.props} {...routeProps} />
           )} />
         <Route 
           path='/:folderId' exact 
-          render={props => (
-            <Folder {...this.props} />
+          render={(routeProps) => (
+            <Folder {...this.props} {...routeProps} />
           )} />
         <Route 
           path='/:folderId/:note' exact 
-          render={props => (
-            <Note {...this.props} />
+          render={(routeProps) => (
+            <Note {...this.props.notes.find(note => note.id === routeProps.match.params.note)} {...routeProps} />
+            // <Note {...routeProps} />
           )} />
         {/* <Route path='/:folderId/:note/:anything' component={PageNotFound} /> */}
       </section>
