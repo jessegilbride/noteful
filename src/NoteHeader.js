@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 
 class NoteHeader extends Component {
   render() {
-    console.log(this.props);
+    // console.log(this.props);
 
     // modified timestamp in UTC format?
     return (

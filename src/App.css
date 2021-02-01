@@ -107,7 +107,8 @@ main.flex-container {
 
 .btn.note-delete {
   position: unset;
-  margin-top: 3em;
+  display: block;
+  margin-top: 1em;
 }
 
 /* ---------- DESKTOP RESPONSIVE VIEW ---------- */
