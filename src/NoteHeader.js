@@ -11,8 +11,6 @@ class NoteHeader extends Component {
       <div className='note-header'>
         <h2 className='note-name'>{this.props.note.name}</h2>
         <span className='note-modified'>Modified: {this.props.note.modified}</span>
-        {/* <span className='note-modified'>Modified: {new Date().toISOString(this.props.note.modified)}</span> */}
-        {/* <span className='note-modified'>Modified: {new Date().toUTCString(this.props.note.modified)}</span> */}
         <input type='button' value='delete this note' className='btn note-delete' />
       </div>
     )

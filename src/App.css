@@ -91,6 +91,8 @@ main.flex-container {
 
 .note-header {
   position: relative;
+  background-color: green;
+  color: white;
 }
 
 .note-name {

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Main from './Main';
 import Sidebar from './Sidebar';
+import { NotefulContext } from "./NotefulContext";
 // FILES & HELPERS --------------------
 import dummyStore from './dummyStore';
 // CSS --------------------
@@ -11,8 +12,21 @@ import './App.css';
 console.clear();
 
 class App extends Component {
+
+  state = {
+    folders: dummyStore.folders,
+    notes: dummyStore.notes
+  }
+
+  deleteNote = (noteId) => {}
   
   render() {
+    const contextValue = {
+      folders: this.state.folders,
+      notes: this.state.notes,
+      deleteNote: this.deleteNote
+    }
+
     return (
       <div className='App'>
         <header>
@@ -20,13 +34,12 @@ class App extends Component {
             <Link to='/' className='header-link'>Noteful</Link>
           </h1>
         </header>
+        <NotefulContext.Provider value={contextValue} >
         <main className='flex-container'>
-          <Sidebar folders={dummyStore.folders} />
-          <Main notes={dummyStore.notes} />
+          <Sidebar folders={this.state.folders} />
+          <Main notes={this.state.notes} />
         </main>
-
-        {/* {console.log(dummyStore.folders)} */}
-        {/* {console.log(dummyStore.notes)} */}
+        </NotefulContext.Provider>
 
       </div>
     )
