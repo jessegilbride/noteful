@@ -15,9 +15,13 @@ class Sidebar extends Component {
     return (
       <nav>
         <Switch>
-          <Route path='/' exact render={ routerProps => <SidebarFolderList {...this.props} {...routerProps} />} />
+          <Route path='/' exact render={ routerProps => <SidebarFolderList />} />
+          <Route path='/:folder' exact render={ routerProps => <SidebarFolderList />} />
+          <Route path='/:folder/:note' render={ routerProps => <SidebarFolderName {...routerProps} />} />
+
+          {/* <Route path='/' exact render={ routerProps => <SidebarFolderList {...this.props} {...routerProps} />} />
           <Route path='/:folder' exact render={ routerProps => <SidebarFolderList {...this.props} {...routerProps} />} />
-          <Route path='/:folder/:note' render={ routerProps => <SidebarFolderName {...this.props} {...routerProps} />} />
+          <Route path='/:folder/:note' render={ routerProps => <SidebarFolderName {...this.props} {...routerProps} />} /> */}
         </Switch>
       </nav>
     )

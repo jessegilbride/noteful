@@ -82,6 +82,7 @@ main.flex-container {
 
 .notes-list-all li,
 .notes-list-folder li {
+  min-height: 3em;
   margin-bottom: 1em;
 }
 

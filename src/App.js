@@ -3,6 +3,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Main from './Main';
 import Sidebar from './Sidebar';
+// import { Route } from 'react-router-dom';
+// import AllNotes from './AllNotes';
+// import Folder from './Folder';
+// import Note from './Note';
 import { NotefulContext } from "./NotefulContext";
 // FILES & HELPERS --------------------
 import dummyStore from './dummyStore';
@@ -35,10 +39,12 @@ class App extends Component {
           </h1>
         </header>
         <NotefulContext.Provider value={contextValue} >
-        <main className='flex-container'>
-          <Sidebar folders={this.state.folders} />
-          <Main notes={this.state.notes} />
-        </main>
+          <main className='flex-container'>
+
+            <Sidebar folders={this.state.folders} />
+            <Main notes={this.state.notes} />
+
+          </main>
         </NotefulContext.Provider>
 
       </div>

@@ -1,13 +1,17 @@
-import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
+import { NotefulContext } from "./NotefulContext";
 // PROPS PASSED IN:
 // folders={dummyStore.folders}
 
 class SidebarFolderList extends Component {
+  static contextType = NotefulContext;
+
   render() {
     // console.log(this.props);
+    // console.log(this.context);
 
-    const folderList = this.props.folders.map(folder => {
+    const folderList = this.context.folders.map(folder => {
       return (
         <li key={folder.id} className='folder-list-item'>
           <NavLink to={`/${folder.id}`} className='folder-link' activeClassName='active'>
