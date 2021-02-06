@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { NotefulContext } from "./NotefulContext";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { withRouter } from "react-router";
 // PROPS PASSED IN:
 // note={...} // << all of the data for a single note
