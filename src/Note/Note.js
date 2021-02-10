@@ -6,9 +6,11 @@ import ApiContext from '../ApiContext'
 import config from '../config'
 import './Note.css'
 
+console.clear();
+
 export default class Note extends React.Component {
-  static defaultProps ={
-    onDeleteNote: () => {},
+  static defaultProps = {
+    onDeleteNote: () => { },
   }
   static contextType = ApiContext;
 
@@ -38,6 +40,7 @@ export default class Note extends React.Component {
   }
 
   render() {
+    { console.log(this.props) }
     const { name, id, modified } = this.props
     return (
       <div className='Note'>
@@ -57,10 +60,11 @@ export default class Note extends React.Component {
         </button>
         <div className='Note__dates'>
           <div className='Note__dates-modified'>
-            Modified
-            {' '}
+            Modified:&nbsp;
             <span className='Date'>
-              {format(modified, 'Do MMM YYYY')}
+              <small>
+                {format(new Date(modified), 'yyyy-MM-dd @ HH:mm:ss (OOOO)')}
+              </small>
             </span>
           </div>
         </div>
