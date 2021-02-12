@@ -6,7 +6,7 @@ import ApiContext from '../ApiContext'
 import config from '../config'
 import './Note.css'
 
-console.clear();
+// console.clear();
 
 export default class Note extends React.Component {
   static defaultProps = {
@@ -40,7 +40,7 @@ export default class Note extends React.Component {
   }
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
 
     const { name, id, modified } = this.props
     return (
