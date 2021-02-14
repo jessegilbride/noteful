@@ -19,6 +19,7 @@ class App extends Component {
         folders: []
     };
 
+    // when page loads, get the notes and folders from the server: 
     componentDidMount() {
         Promise.all([
             fetch(`${config.API_ENDPOINT}/notes`),
@@ -40,7 +41,41 @@ class App extends Component {
             });
     }
 
-    handleDeleteNote = noteId => {
+    handleAddFolder = (folderName) => {
+        this.setState({
+            folders: [...this.state.folders, folderName]
+        })
+    }
+
+    handleAddNote = (noteName, noteFolder, noteContent, noteModified) => {
+        console.log(noteName, noteFolder, noteContent, noteModified);
+
+        const addToFolder = this.state.folders.find(folder => folder.name === noteFolder)
+        console.log(addToFolder)
+
+        // NEW NOTE OBJECT ARCHITYPE:
+        /*
+        "id": "",
+        "name": "",
+        "folderId": "",
+        "content": "",
+        "modified": // UTC timestamp string
+        */
+        // >> IS THIS NOT THE RIGHT THING TO DO TO PUT A NOTE INTO STATE?
+        const newNote = {
+            "name": noteName,
+            "modified": noteModified,
+            "folderId": addToFolder,
+            "content": noteContent
+        }
+        console.log(newNote);
+
+        this.setState({
+            notes: [...this.state.notes, newNote]
+        })
+    }
+
+    handleDeleteNote = (noteId) => {
         this.setState({
             notes: this.state.notes.filter(note => note.id !== noteId)
         });
@@ -88,8 +123,11 @@ class App extends Component {
 
     render() {
         const value = {
+            // references to state and methods in this component (that is, they just point to them, so no need to involve passing arguments) 
             notes: this.state.notes,
             folders: this.state.folders,
+            addFolder: this.handleAddFolder,
+            addNote: this.handleAddNote,
             deleteNote: this.handleDeleteNote
         };
         return (

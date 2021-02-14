@@ -1,27 +1,33 @@
 import React, { Component } from 'react';
+import ApiContext from '../ApiContext';
 import config from '../config'; // for POST operation
 
 export class AddFolder extends Component {
 
+  static contextType = ApiContext;
+
   constructor() {
     super();
     this.state = {
-      folderName: ''
+      name: ''
     }
   }
 
+  // this is use to put folder name into state for use in handleAddFolder(), and possible future validation. 
+  // not actually necessary if just that value were to be grabbed from the text input. 
   updateFolderName(folderName) {
     this.setState({
-      folderName: folderName
+      name: folderName
     })
   }
 
   handleAddFolder = (event) => {
     event.preventDefault();
-    const folderName = this.state.folderName;
+    const folderName = this.state.name; // get name from local state
+    // console.log(folderName);
     const options = {
       method: 'POST',
-      body: JSON.stringify(folderName),
+      body: JSON.stringify({ name: folderName }),
       headers: {
         "Content-Type": "application/json"
       }
@@ -32,11 +38,15 @@ export class AddFolder extends Component {
         if (!response.ok) {
           throw new Error('Unable to contact the server');
         }
-        return response.json(); // << ASK CINDY why this needs .json()
+        return response.json(); // reads the response as a json object
       })
       .then(response => {
-        console.log(response)
+        // console.log(response)
+        this.context.addFolder(folderName)
       })
+      .then(
+        this.props.history.push(`/`)
+      )
       .catch(error => {
         console.log(error);
       });

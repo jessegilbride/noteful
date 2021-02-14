@@ -27,11 +27,11 @@ export default class Note extends React.Component {
       .then(res => {
         if (!res.ok)
           return res.json().then(e => Promise.reject(e))
-        return res.json()
+        // return res.json() // this is empty, nothing to do with it
       })
       .then(() => {
         this.context.deleteNote(noteId)
-        // allow parent to perform extra behaviour
+        // when parent is NotePageMain, allows use of history.push(`/`) to send user to homepage: 
         this.props.onDeleteNote(noteId)
       })
       .catch(error => {
@@ -63,9 +63,11 @@ export default class Note extends React.Component {
           <div className='Note__dates-modified'>
             Modified:&nbsp;
             <span className='Date'>
-              <small>
-                {format(new Date(modified), 'yyyy-MM-dd @ HH:mm:ss (OOOO)')}
-              </small>
+              {/* <small> */}
+              {/* {format(new Date(modified), 'yyyy-MM-dd HH:mm:ss')} */}
+              {/* {Date(modified)} */}
+              {modified}
+              {/* </small> */}
             </span>
           </div>
         </div>
