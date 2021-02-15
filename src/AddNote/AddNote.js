@@ -17,14 +17,13 @@ export class AddNote extends Component {
   }
 
   componentDidMount() {
-    // put the first folder in the drop-down list into state as a default in case user doesn't trigger the onChange()
+    // put the first folder in the drop-down list into state as a default, in case user doesn't trigger the onChange()
     this.setState({
-      folder: document.querySelector('#selectedFolder').value
+      folder: document.querySelector('#selectedFolder').value // the select gets its value from the option's value
     })
   }
 
-  // this is use to put note name into state for use in handleAddNote(), and possible future validation. 
-  // not actually necessary if just that value were to be grabbed from the text input. 
+  // put folder name into state. possibly useful to do form validation. 
   updateNoteNameState(noteName) {
     this.setState({
       name: noteName
@@ -39,25 +38,16 @@ export class AddNote extends Component {
   handleAddNote = (event) => {
     event.preventDefault();
 
-    const timestamp = (new Date()).toISOString();
-    // console.log(timestamp)
-    this.setState({
-      modified: timestamp
-    })
-
-    const noteName = this.state.name;
-    const noteFolder = this.state.folder;
-    const noteContent = this.state.content;
-    const noteModified = this.state.modified;
+    const note = {
+      name: this.state.name,
+      folderId: this.state.folder,
+      content: this.state.content,
+      modified: new Date()
+    };
 
     const options = {
-      method: 'POST',
-      body: JSON.stringify({
-        name: noteName,
-        folderId: noteFolder,
-        content: noteContent,
-        modified: noteModified
-      }),
+      method: "POST",
+      body: JSON.stringify(note),
       headers: {
         "Content-Type": "application/json"
       }
@@ -68,19 +58,13 @@ export class AddNote extends Component {
         if (!response.ok) {
           throw new Error('Unable to contact the server');
         }
-        console.log(response.json())
-        return response.json(); // reads the response as a json object
+        return response.json();
       })
-      .then(response => {
-        console.log('response:')
-        console.log(response)
-        // console.log(this.state.modified)
-        this.context.addNote(noteName, noteFolder, noteContent, noteModified)
-
-      })
-      .then(
+      .then(data => {
+        // console.log(data)
+        this.context.addNote(data)
         this.props.history.push(`/`)
-      )
+      })
       .catch(error => {
         console.log(error);
       });
@@ -91,20 +75,20 @@ export class AddNote extends Component {
       <div className='AddNote api-request-form'>
         <form onSubmit={e => this.handleAddNote(e)}>
           <div>
-            <label htmlFor='newNoteInput'>New note name:</label>
+            <label htmlFor='newNoteInput'>New note name: </label>
             <input type='text' name='newNoteInput' id='newNoteInput' onChange={e => this.updateNoteNameState(e.target.value)} autoFocus required />
           </div>
           <div>
             <select name='selectedFolder' id='selectedFolder' onChange={e => this.setState({ folder: e.target.value })}>
               {this.context.folders.map(folder => {
-                return <option key={folder.id}>{folder.name}</option>
+                return <option key={folder.id} value={folder.id}>{folder.name}</option>
               })}
             </select>
           </div>
           <div>
             <input type='textarea' name='newNoteContent' id='newNoteContent' onChange={e => this.updateNoteContentState(e.target.value)} />
           </div>
-          <button>create note</button>
+          <button type='submit'>create note</button>
         </form>
       </div>
     )
@@ -112,10 +96,3 @@ export class AddNote extends Component {
 }
 
 export default AddNote
-
-/*
-"name": "",
-"folderId": "",
-"content": "",
-"modified": // UTC timestamp string
- */

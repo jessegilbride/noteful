@@ -10,7 +10,6 @@ export default function NavCircleButton(props) {
       className: ['NavCircleButton', className].join(' '),
       ...otherProps
     },
-    // props.children
     children
   )
 }
