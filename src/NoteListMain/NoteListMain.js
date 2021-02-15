@@ -1,4 +1,5 @@
 import React from 'react'
+import { ErrorBoundaryListMain } from "../ErrorBoundaries/ErrorBoundaryListMain";
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Note from '../Note/Note'
@@ -17,34 +18,37 @@ export default class NoteListMain extends React.Component {
 
   render() {
     const { folderId } = this.props.match.params
-    const { notes=[] } = this.context
+    const { notes = [] } = this.context
     const notesForFolder = getNotesForFolder(notes, folderId)
     return (
-      <section className='NoteListMain'>
-        <ul>
-          {notesForFolder.map(note =>
-            <li key={note.id}>
-              <Note
-                id={note.id}
-                name={note.name}
-                modified={note.modified}
-              />
-            </li>
-          )}
-        </ul>
-        <div className='NoteListMain__button-container'>
-          <CircleButton
-            tag={Link}
-            to='/add-note'
-            type='button'
-            className='NoteListMain__add-note-button'
-          >
-            <FontAwesomeIcon icon='plus' />
-            <br />
+      <ErrorBoundaryListMain>
+        <section className='NoteListMain'>
+          <ul>
+            {notesForFolder.map(note =>
+              <li key={note.id}>
+                <Note
+                  id={note.id}
+                  // id={123} // PropTypes test
+                  name={note.name}
+                  modified={note.modified}
+                />
+              </li>
+            )}
+          </ul>
+          <div className='NoteListMain__button-container'>
+            <CircleButton
+              tag={Link}
+              to='/add-note'
+              type='button'
+              className='NoteListMain__add-note-button'
+            >
+              <FontAwesomeIcon icon='plus' />
+              <br />
             Note
           </CircleButton>
-        </div>
-      </section>
+          </div>
+        </section>
+      </ErrorBoundaryListMain>
     )
   }
 }

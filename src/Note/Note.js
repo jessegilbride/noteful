@@ -1,6 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import { format } from 'date-fns'
+// import { format } from 'date-fns'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ApiContext from '../ApiContext'
 import config from '../config'
@@ -63,11 +64,9 @@ export default class Note extends React.Component {
           <div className='Note__dates-modified'>
             Modified:&nbsp;
             <span className='Date'>
-              {/* <small> */}
               {/* {format(new Date(modified), 'yyyy-MM-dd HH:mm:ss')} */}
               {/* {Date(modified)} */}
               {modified}
-              {/* </small> */}
             </span>
           </div>
         </div>
@@ -75,3 +74,9 @@ export default class Note extends React.Component {
     )
   }
 }
+
+Note.propTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string,
+  modified: PropTypes.string
+};
