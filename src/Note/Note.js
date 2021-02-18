@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-// import { format } from 'date-fns'
+import { format } from 'date-fns'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ApiContext from '../ApiContext'
 import config from '../config'
@@ -33,7 +33,7 @@ export default class Note extends React.Component {
       .then(() => {
         this.context.deleteNote(noteId)
         // when parent is NotePageMain, allows use of history.push(`/`) to send user to homepage: 
-        this.props.onDeleteNote(noteId)
+        this.props.onDeleteNote(noteId) // << [!] this is the beginning of a bug to fix where deleting a note while in note view crashes the app
       })
       .catch(error => {
         console.error({ error })
@@ -64,9 +64,10 @@ export default class Note extends React.Component {
           <div className='Note__dates-modified'>
             Modified:&nbsp;
             <span className='Date'>
-              {/* {format(new Date(modified), 'yyyy-MM-dd HH:mm:ss')} */}
+              {format(new Date(modified), 'yyyy-MM-dd HH:mm:ss')}
               {/* {Date(modified)} */}
-              {modified}
+              <br />
+              {/* {modified} */}
             </span>
           </div>
         </div>
@@ -76,7 +77,7 @@ export default class Note extends React.Component {
 }
 
 Note.propTypes = {
-  id: PropTypes.string,
-  name: PropTypes.string,
-  modified: PropTypes.string
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  modified: PropTypes.string.isRequired
 };
