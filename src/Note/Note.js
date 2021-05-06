@@ -33,7 +33,7 @@ export default class Note extends React.Component {
       .then(() => {
         this.context.deleteNote(noteId)
         // when parent is NotePageMain, allows use of history.push(`/`) to send user to homepage: 
-        this.props.onDeleteNote(noteId) // << [!] this is the beginning of a bug to fix where deleting a note while in note view crashes the app
+        this.props.onDeleteNote(noteId)
       })
       .catch(error => {
         console.error({ error })
