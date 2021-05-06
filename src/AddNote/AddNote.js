@@ -40,7 +40,7 @@ export class AddNote extends Component {
 
     const note = {
       name: this.state.name,
-      folderId: this.state.folder,
+      folderid: this.state.folder,
       content: this.state.content,
       modified: new Date()
     };
@@ -61,7 +61,6 @@ export class AddNote extends Component {
         return response.json();
       })
       .then(data => {
-        // console.log(data)
         this.context.addNote(data)
         this.props.history.push(`/`)
       })
