@@ -39,7 +39,6 @@ export class AddFolder extends Component {
         return response.json();
       })
       .then(data => {
-        console.log(data)
         this.context.addFolder(data)
       })
       .then(
